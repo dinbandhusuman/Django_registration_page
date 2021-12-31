@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v10 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- LINEARICONS -->
+		<link rel="stylesheet" href="{% static 'fonts/linearicons/style.css' %}">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	</head>
+
+	<body>
+
+		<div class="wrapper">
+			<div class="inner">
+				<img src="{% static 'images/image-1.png' %}" alt="" class="image-1">
+
+				<form method="POST" novalidate >
+					{% for users in user%}
+					{% csrf_token %}
+					{{users.label_tag}}
+					{{users}}
+					{{users.errors | striptags}}<br><br>
+					{% endfor %}
+					<input type="submit" value="Register">
+				</form>
+				{% if messages %}
+				{% for message in messages %}
+				<small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
+				{% endfor %}
+				{% endif %}
+
+
+				<img src="{% static 'images/image-2.png' %}" alt="" class="image-2">
+			</div>
+
+		</div>
+
+		<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+		<script src="{% static 'js/main.js' %}"></script>
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
